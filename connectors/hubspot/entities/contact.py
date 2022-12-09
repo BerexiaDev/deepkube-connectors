@@ -29,7 +29,12 @@ class Contact():
     def format_batch_contacts(self, contacts, contact_properties):
         result = []
         for c in contacts:
-            my_dict = {"email": c['email']}
+            my_dict = {}
+            if "vid" in c.keys():
+                my_dict.update({"vid": c['vid']})
+            elif "email" in c.keys():
+                my_dict.update({"email": c['email']})
+
             properties = [{"property": k, "value": c[k]} for k in c.keys() if k in contact_properties]
             my_dict['properties'] = properties
             result.append(my_dict)
