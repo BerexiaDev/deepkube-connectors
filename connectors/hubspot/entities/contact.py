@@ -31,8 +31,10 @@ class Contact():
         for c in contacts:
             my_dict = {}
             if "vid" in c.keys():
+                print('===================== VID KEY', flush=True)
                 my_dict.update({"vid": c['vid']})
             elif "email" in c.keys():
+                print('===================== EMAIL KEY', flush=True)
                 my_dict.update({"email": c['email']})
 
             properties = [{"property": k, "value": c[k]} for k in c.keys() if k in contact_properties]
@@ -41,6 +43,7 @@ class Contact():
 
         # Split arrays
         result = split_array(result)
+        print('========================== RESULT', result, flush=True)
         return result
 
     # Create or Update Batch Contact
